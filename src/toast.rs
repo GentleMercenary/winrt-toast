@@ -1,5 +1,7 @@
 use std::{collections::HashMap, time::Duration};
 
+use chrono::{DateTime, Utc};
+
 use crate::{Action, Header, Image, Text};
 
 /// Represents a Windows toast.
@@ -15,6 +17,7 @@ pub struct Toast {
     pub(crate) group: Option<String>,
     pub(crate) remote_id: Option<String>,
     pub(crate) expires_in: Option<Duration>,
+    pub(crate) timestamp: Option<DateTime<Utc>>,
     pub(crate) scenario: Option<Scenario>,
     pub(crate) launch: Option<String>,
     pub(crate) duration: Option<ToastDuration>,
@@ -135,6 +138,12 @@ impl Toast {
     /// After expiration, the toast will be removed from the Notification Center.
     pub fn expires_in(&mut self, duration: Duration) -> &mut Toast {
         self.expires_in = Some(duration);
+        self
+    }
+
+    /// Set the displayed timestamp of this toast.
+    pub fn timestamp(&mut self, timestamp: DateTime<Utc>) -> &mut Toast {
+        self.timestamp = Some(timestamp);
         self
     }
 }

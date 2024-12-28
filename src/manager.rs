@@ -128,6 +128,10 @@ impl ToastManager {
             toast_el.SetAttribute(&hs("duration"), &hs(duration.as_str()))?;
         }
 
+        if let Some(timestamp) = &in_toast.timestamp {
+            toast_el.SetAttribute(&hs("displayTimestamp"), &hs(timestamp.to_rfc3339_opts(chrono::SecondsFormat::Millis, false)))?;
+        }
+
         // <header>
         if let Some(header) = &in_toast.header {
             let el = toast_doc.CreateElement(&hs("header"))?;

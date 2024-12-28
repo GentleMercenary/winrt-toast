@@ -13,11 +13,11 @@ repository = "https://github.com/chengyuhui/kdeconnect-rs/tree/main/winrt-toast"
 
 [dependencies]
 scopeguard = "1.1.0"
-thiserror = "1.0.32"
+thiserror = "2.0.9"
 url = "2.2.2"
 
 [dependencies.windows]
-version = "0.43.0"
+version = "0.58.0"
 features = [
     "Data_Xml_Dom",
     "Foundation",
